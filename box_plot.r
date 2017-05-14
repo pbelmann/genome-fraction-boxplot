@@ -38,7 +38,7 @@ fillDataset(inputDataframe$path)
 final_dataset <- merge(inputDataframe, dataset, by=c("path"), all.y=T)
 
 #build the plot with ggplot
-p <- ggplot(data=final_dataset, aes(x=reorder(Assembly, Genome.fraction....), y=Genome.fraction...., fill=Assembly) ) + 
+p <- ggplot(data=final_dataset, aes(x=reorder(name, Genome.fraction....), y=Genome.fraction...., fill=name) ) + 
 	geom_boxplot() + 
         geom_point() +
 	coord_flip() +
