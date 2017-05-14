@@ -13,7 +13,7 @@ path = args[1]
 postfix = args[2]
 
 inputDataframe = cbind.data.frame(read.delim(path, header = TRUE, stringsAsFactors = FALSE))
-inputDataframe$path <- file.path(inputDataframe$path, "runs_per_reference")
+inputDataframe$path <- file.path(inputDataframe$path, postfix)
 
 #iterate over all assembly results and combine all quast results (transposed_report.tsv)
 fillDataset <- function(paths) {
