@@ -22,10 +22,10 @@ fillDataset <- function(paths) {
     lapply(files, function(file) {
         if (!exists("dataset")) {
        	   dataset <- cbind.data.frame(read.delim(file, header=TRUE, stringsAsFactors=FALSE))
-	   dataset$path = file
+	   dataset$path = assembler
           } else {
            temp_dataset <- cbind.data.frame(read.delim(file, header=TRUE, stringsAsFactors=FALSE))
-           temp_dataset$path = file
+           temp_dataset$path = assembler
            dataset <- rbind.fill(list(dataset, temp_dataset))
           }
         dataset <<- dataset[!grepl("broken", dataset$Assembly),]
@@ -35,10 +35,10 @@ fillDataset <- function(paths) {
 }
 
 fillDataset(inputDataframe$path)
-final_dataset <- merge(inputDataframe, dataset, by=c("path"), all.y=T)
+final_dataset <- merge(dataset, inputDataframe, by=c("path"), all.x=T)
 
 #build the plot with ggplot
-p <- ggplot(data=final_dataset, aes(x=reorder(name, Genome.fraction....), y=Genome.fraction...., fill=name) ) + 
+p <- ggplot(data=final_dataset, aes(x=reorder(name, Genome.fraction....), y=Genome.fraction...., fill=name)) + 
 	geom_boxplot() + 
         geom_point() +
 	coord_flip() +
