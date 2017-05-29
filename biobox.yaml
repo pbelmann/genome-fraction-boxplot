@@ -4,14 +4,14 @@ results:
     type: html
     inline: false
     value: strain_out.html
-    description: Genome Fraction boxplot
+    description: Genome Fraction box plot for strains genomes (ANI >= 95%).
   - name: HTML
     type: html
     inline: false
     value: uniq_out.html
-    description: Genome Fraction boxplot
+    description: Genome Fraction box plot for uniq genomes (ANI < 95%).
   - name: HTML
     type: html
     inline: false
     value: circular_out.html
-    description: Genome Fraction boxplot
+    description: Genome Fraction box plot for circular elements like plasmids and viruses.
